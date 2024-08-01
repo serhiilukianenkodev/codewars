@@ -184,12 +184,46 @@
 // 2 --> 1 + 1/4 --> "1.25"
 // 5 --> 1 + 1/4 + 1/7 + 1/10 + 1/13 --> "1.57"
 
-function SeriesSum(n) {
-  let res = 0;
-  for (let i = 0; i < n; i++) {
-    res += 1 / (3 * i + 1);
-  }
+// function SeriesSum(n) {
+//   let res = 0;
+//   for (let i = 0; i < n; i++) {
+//     res += 1 / (3 * i + 1);
+//   }
 
-  return (Math.round(parseFloat(res) * 100) / 100).toFixed(2).toString();
+//   return (Math.round(parseFloat(res) * 100) / 100).toFixed(2).toString();
+// }
+// console.log(SeriesSum(1));
+
+// -------------------------------------------------------------------
+
+// Given a list and a number, create a new list that contains each number of list at most N times, without reordering.
+// For example if the input number is 2, and the input list is[1, 2, 3, 1, 2, 1, 2, 3], you take[1, 2, 3, 1, 2],
+// drop the next[1, 2] since this would lead to 1 and 2 being in the result 3 times, and then take 3, which leads to[1, 2, 3, 1, 2, 3].
+// With list [20,37,20,21] and number 1, the result would be [20,37,21].
+
+// function deleteNth(arr, n) {
+//   const set = {};
+//   const res = arr.reduce((acc, item) => {
+//     const key = item.toString();
+//     set[key] ? (set[key] += 1) : (set[key] = 1);
+//     if (set[key] <= n) {
+//       acc.push(item);
+//     }
+//     return acc;
+//   }, []);
+
+//   return res;
+// }
+
+// console.log(deleteNth([1, 1, 3, 3, 7, 2, 2, 2, 2], 3));
+
+// -----------------------------------------------------
+
+function getGrade(s1, s2, s3) {
+  const average = (s1 + s2 + s3) / 3;
+  if (average >= 90) return "A";
+  if (average >= 80) return "B";
+  if (average >= 70) return "C";
+  if (average >= 60) return "D";
+  return "F";
 }
-console.log(SeriesSum(1));
