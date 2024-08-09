@@ -219,11 +219,118 @@
 
 // -----------------------------------------------------
 
-function getGrade(s1, s2, s3) {
-  const average = (s1 + s2 + s3) / 3;
-  if (average >= 90) return "A";
-  if (average >= 80) return "B";
-  if (average >= 70) return "C";
-  if (average >= 60) return "D";
-  return "F";
+// function getGrade(s1, s2, s3) {
+//   const average = (s1 + s2 + s3) / 3;
+//   if (average >= 90) return "A";
+//   if (average >= 80) return "B";
+//   if (average >= 70) return "C";
+//   if (average >= 60) return "D";
+//   return "F";
+// }
+
+// ------------------------------------------------------
+
+// Given two arrays a and b write a function comp(a, b) (orcompSame(a, b)) that checks whether the two arrays have the "same" elements,
+// with the same multiplicities(the multiplicity of a member is the number of times it appears).
+// "Same" means, here, that the elements in b are the elements in a squared, regardless of the order.
+
+// Examples
+// Valid arrays
+// a = [121, 144, 19, 161, 19, 144, 19, 11]
+// b = [121, 14641, 20736, 361, 25921, 361, 20736, 361]
+// comp(a, b) returns true because in b 121 is the square of 11, 14641 is the square of 121,
+//   20736 the square of 144, 361 the square of 19, 25921 the square of 161, and so on.
+//   It gets obvious if we write b's elements in terms of squares:
+
+// a = [121, 144, 19, 161, 19, 144, 19, 11]
+// b = [11*11, 121*121, 144*144, 19*19, 161*161, 19*19, 144*144, 19*19]
+// Invalid arrays
+// If, for example, we change the first number to something else, comp is not returning true anymore:
+
+// a = [121, 144, 19, 161, 19, 144, 19, 11]
+// b = [132, 14641, 20736, 361, 25921, 361, 20736, 361]
+// comp(a,b) returns false because in b 132 is not the square of any number of a.
+
+// a = [121, 144, 19, 161, 19, 144, 19, 11]
+// b = [121, 14641, 20736, 36100, 25921, 361, 20736, 361]
+// comp(a,b) returns false because in b 36100 is not the square of any number of a.
+
+// Remarks
+// a or b might be [] or {} (all languages except R, Shell).
+// a or b might be nil or null or None or nothing(except in C++, COBOL, Crystal, D, Dart, Elixir,
+//   Fortran, F#, Haskell, Nim, OCaml, Pascal, Perl, PowerShell, Prolog, PureScript, R, Racket, Rust, Shell, Swift).
+// If a or b are nil (or null or None, depending on the language), the problem doesn't make sense so return false.
+
+// function comp(array1, array2) {
+//   if (!array1 || !array2) return false;
+//   const firstSquared = array1.map((el) => el ** 2);
+//   return array2.every((el) => firstSquared.some((i) => i === el));
+// }
+
+// console.log(
+//   comp([3, 1, 5, 0, 3, 0, 4, 5, 5, 2, 0], [0, 1, 9, 16, 25, 1, 25, 4, 0, 9, 25])
+// );
+
+// -------------------------------------------------------------
+
+// Write Number in Expanded Form
+// You will be given a number and you will need to return it as a string in Expanded Form. For example:
+
+// expandedForm(12); // Should return '10 + 2'
+// expandedForm(42); // Should return '40 + 2'
+// expandedForm(70304); // Should return '70000 + 300 + 4'
+// NOTE: All numbers will be whole numbers greater than 0.
+
+// function expandedForm(num) {
+//   return num
+//     .toString()
+//     .split("")
+//     .map((item, idx, arr) => Number(item) * Math.pow(10, arr.length - idx - 1))
+//     .filter((item) => item !== 0)
+//     .join(" + ");
+// }
+
+// console.log(expandedForm(70304));
+
+// -------------------------------------------------------------
+
+// expanded_from(807.304); // Should return "800 + 7 + 3/10 + 4/1000"
+// expanded_from(1.24); // should return "1 + 2/10 + 4/100"
+// expanded_from(7.304); // should return "7 + 3/10 + 4/1000"
+// expanded_from(0.04); // should return "4/100"
+
+// function expandedForm(num) {
+//   const [entire, fractional] = String(num).split(".");
+
+//   const entireExpanded = entire
+//     .split("")
+//     .map((item, idx, arr) => Number(item) * Math.pow(10, arr.length - idx - 1))
+//     .filter((item) => item !== 0);
+
+//   const fractionalExpanded = fractional
+//     .split("")
+//     .map((item, idx) =>
+//       item != 0 ? `${Number(item)}/${Math.pow(10, idx + 1)}` : 0
+//     )
+//     .filter((item) => item !== 0);
+
+//   return [...entireExpanded, ...fractionalExpanded].join(" + ");
+// }
+
+// console.log(expandedForm(0.0));
+
+// ---------------------------------------------------------------
+
+// The main idea is to count all the occurring characters in a string.
+// If you have a string like aba, then the result should be { 'a': 2, 'b': 1 }.
+
+// What if the string is empty? Then the result should be empty object literal, {}.
+
+function count(string) {
+  return [...string].reduce(
+    (obj, item) => ({ ...obj, [item]: obj[item] ? obj[item] + 1 : 1 }),
+    {}
+  );
 }
+
+console.log(count("gooogle"));
