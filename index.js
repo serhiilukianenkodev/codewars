@@ -326,11 +326,121 @@
 
 // What if the string is empty? Then the result should be empty object literal, {}.
 
-function count(string) {
-  return [...string].reduce(
-    (obj, item) => ({ ...obj, [item]: obj[item] ? obj[item] + 1 : 1 }),
-    {}
-  );
-}
+// function count(string) {
+//   return [...string].reduce(
+//     (obj, item) => ({ ...obj, [item]: obj[item] ? obj[item] + 1 : 1 }),
+//     {}
+//   );
+// }
 
-console.log(count("gooogle"));
+// console.log(count("gooogle"));
+
+// --------------------------------------------------------------------------------
+
+// Write a function that takes an array of numbers and returns the sum of the numbers.The numbers can be negative or non - integer.
+// If the array does not contain any numbers then you should return 0.
+
+// Examples
+// Input: [1, 5.2, 4, 0, -1]
+// Output: 9.2
+
+// Input: []
+// Output: 0
+
+// Input: [-2.398]
+// Output: -2.398
+
+// Assumptions
+// You can assume that you are only given numbers.
+// You cannot assume the size of the array.
+// You can assume that you do get an array and if the array is empty, return 0.
+// What We're Testing
+// We're testing basic loops and math operations. This is for beginners who are just learning loops and math operations.
+// Advanced users may find this extremely easy and can easily write this in one line.
+
+// function sum(numbers) {
+//   "use strict";
+
+//   return numbers.reduce((acc, num) => acc + num, 0);
+// }
+
+// console.log(sum([1, 5.2, 4, 0, -1]));
+
+// *************************************************************************
+
+// An isogram is a word that has no repeating letters, consecutive or non - consecutive.
+// Implement a function that determines whether a string that contains only letters is an isogram.
+// Assume the empty string is an isogram.Ignore letter case.
+
+// Example: (Input --> Output)
+
+// "Dermatoglyphics" --> true
+// "aba" --> false
+// "moOse" --> false (ignore letter case)
+
+// function isIsogram(str) {
+//   return str
+//     .toLowerCase()
+//     .split("")
+//     .every((item, idx, arr) => arr.findIndex((i) => i === item) === idx);
+// }
+
+// console.log(isIsogram("aba"));
+
+// ****************************************************************************
+
+// You probably know the "like" system from Facebook and other pages.People can "like" blog posts, pictures or other items.
+// We want to create the text that should be displayed next to such an item.
+
+// Implement the function which takes an array containing the names of people that like an item.
+// It must return the display text as shown in the examples:
+
+// []                                -->  "no one likes this"
+// ["Peter"]                         -->  "Peter likes this"
+// ["Jacob", "Alex"]                 -->  "Jacob and Alex like this"
+// ["Max", "John", "Mark"]           -->  "Max, John and Mark like this"
+// ["Alex", "Jacob", "Mark", "Max"]  -->  "Alex, Jacob and 2 others like this
+
+// function likes(names) {
+//   const count = names.length;
+
+//   switch (count) {
+//     case 0:
+//       return "no one likes this";
+
+//     case 1:
+//       return `${names[0]} likes this`;
+
+//     case 2:
+//       return `${names[0]} and ${names[1]} like this`;
+
+//     case 3:
+//       return `${names[0]}, ${names[1]} and ${names[2]} like this`;
+
+//     default:
+//       return `${names[0]}, ${names[1]} and ${count - 2} others like this`;
+//   }
+// }
+
+// console.log(likes([]));
+
+// *************************************************************************
+
+// Implement the function unique_in_order which takes as argument a sequence and returns a list of items without any elements
+// with the same value next to each other and preserving the original order of elements.
+
+// For example:
+
+// uniqueInOrder('AAAABBBCCDAABBB') == ['A', 'B', 'C', 'D', 'A', 'B']
+// uniqueInOrder('ABBCcAD')         == ['A', 'B', 'C', 'c', 'A', 'D']
+// uniqueInOrder([1,2,2,3,3])       == [1,2,3]
+
+var uniqueInOrder = function (iterable) {
+  return [...iterable].reduce((previous, current) => {
+    return previous[previous.length - 1] === current
+      ? previous
+      : [...previous, current];
+  }, []);
+};
+
+console.log(uniqueInOrder("AAAABBBCCDAABBB"));
