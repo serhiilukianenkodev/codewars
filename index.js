@@ -464,6 +464,29 @@
 
 // The second value in the first pair in the array is 0, since the bus is empty in the first bus stop.
 
-var number = function (busStops) {
-  return busStops.reduce((total, [on, off]) => total + on - off, 0);
-};
+// var number = function (busStops) {
+//   return busStops.reduce((total, [on, off]) => total + on - off, 0);
+// };
+
+// **************************************************************************
+
+// The goal of this exercise is to convert a string to a new string where each character in the new string is "("
+// if that character appears only once in the original string, or ")"
+// if that character appears more than once in the original string.
+// Ignore capitalization when determining if a character is a duplicate.
+
+// Examples
+// "din"      =>  "((("
+// "recede"   =>  "()()()"
+// "Success"  =>  ")())())"
+// "(( @"     =>  "))(("
+
+function duplicateEncode(word) {
+  const arr = word.toLowerCase().split("");
+  const res = arr.map((item, idx, array) => {
+    return array.indexOf(item) === array.lastIndexOf(item) ? "(" : ")";
+  });
+  return res.join("");
+}
+
+console.log(duplicateEncode("Success"));
