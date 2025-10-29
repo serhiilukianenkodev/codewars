@@ -533,8 +533,24 @@
 // Сalculate how many years ago the father was twice as old as his son(or in how many years he will be twice as old).
 // The answer is always greater or equal to 0, no matter if it was in the past or it is in the future.
 
-function twiceAsOld(dadYearsOld, sonYearsOld) {
-  return Math.abs(dadYearsOld - 2 * sonYearsOld);
+// function twiceAsOld(dadYearsOld, sonYearsOld) {
+//   return Math.abs(dadYearsOld - 2 * sonYearsOld);
+// }
+
+// console.log(twiceAsOld(55, 30));
+
+// **************************************************************************
+
+// In this kata you will create a function that takes a list of non - negative integers and strings
+// and returns a new list with the strings filtered out.
+
+// Example
+// filter_list([1,2,'a','b']) == [1,2]
+// filter_list([1,'a','b',0,15]) == [1,0,15]
+// filter_list([1,2,'aasf','1','123',123]) == [1,2,123]
+
+function filter_list(list) {
+  return list.filter((item) => typeof item === "number");
 }
 
-console.log(twiceAsOld(55, 30));
+console.log(filter_list([1, "a", "b", 0, 15]));
