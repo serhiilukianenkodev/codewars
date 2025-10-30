@@ -549,8 +549,14 @@
 // filter_list([1,'a','b',0,15]) == [1,0,15]
 // filter_list([1,2,'aasf','1','123',123]) == [1,2,123]
 
-function filter_list(list) {
-  return list.filter((item) => typeof item === "number");
-}
+// function filter_list(list) {
+//   return list.filter((item) => typeof item === "number");
+// }
 
-console.log(filter_list([1, "a", "b", 0, 15]));
+// console.log(filter_list([1, "a", "b", 0, 15]));
+
+// **************************************************************************
+
+Write a function which calculates the average of the numbers in a given array.
+
+Note: Empty arrays should return 0.
