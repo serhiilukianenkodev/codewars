@@ -557,6 +557,13 @@
 
 // **************************************************************************
 
-Write a function which calculates the average of the numbers in a given array.
+// Write a function which calculates the average of the numbers in a given array.
 
-Note: Empty arrays should return 0.
+//   Note: Empty arrays should return 0.
+
+function findAverage(array) {
+  const sum = array.reduce((previous, current) => previous + current, 0);
+  return sum / (array.length || 1);
+}
+
+console.log(findAverage([1, 2, 3, 4]));
